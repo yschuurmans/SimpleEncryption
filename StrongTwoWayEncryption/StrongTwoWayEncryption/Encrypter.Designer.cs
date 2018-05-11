@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimpleEncryptor));
             this.tbStrings = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.Files = new System.Windows.Forms.TabPage();
             this.lblInput = new System.Windows.Forms.Label();
             this.lblPasswordCheck = new System.Windows.Forms.Label();
             this.tbInput = new System.Windows.Forms.TextBox();
@@ -42,16 +41,17 @@
             this.btnEncrypt = new System.Windows.Forms.Button();
             this.tbOuput = new System.Windows.Forms.TextBox();
             this.lblOutput = new System.Windows.Forms.Label();
+            this.Files = new System.Windows.Forms.TabPage();
+            this.btnBrowse = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.tbFileUrl = new System.Windows.Forms.TextBox();
+            this.tbFilePassword2 = new System.Windows.Forms.TextBox();
+            this.tbFilePassword1 = new System.Windows.Forms.TextBox();
+            this.btnDecryptFile = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnEncryptFile = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button3 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tbStrings.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -84,29 +84,10 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(411, 327);
+            this.tabPage1.Size = new System.Drawing.Size(411, 211);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Strings";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // Files
-            // 
-            this.Files.Controls.Add(this.button3);
-            this.Files.Controls.Add(this.label1);
-            this.Files.Controls.Add(this.label2);
-            this.Files.Controls.Add(this.tbFileUrl);
-            this.Files.Controls.Add(this.textBox2);
-            this.Files.Controls.Add(this.textBox3);
-            this.Files.Controls.Add(this.button1);
-            this.Files.Controls.Add(this.label3);
-            this.Files.Controls.Add(this.button2);
-            this.Files.Location = new System.Drawing.Point(4, 22);
-            this.Files.Name = "Files";
-            this.Files.Padding = new System.Windows.Forms.Padding(3);
-            this.Files.Size = new System.Drawing.Size(411, 211);
-            this.Files.TabIndex = 1;
-            this.Files.Text = "tabPage2";
-            this.Files.UseVisualStyleBackColor = true;
             // 
             // lblInput
             // 
@@ -206,14 +187,44 @@
             this.lblOutput.TabIndex = 16;
             this.lblOutput.Text = "Output";
             // 
+            // Files
+            // 
+            this.Files.Controls.Add(this.btnBrowse);
+            this.Files.Controls.Add(this.label1);
+            this.Files.Controls.Add(this.label2);
+            this.Files.Controls.Add(this.tbFileUrl);
+            this.Files.Controls.Add(this.tbFilePassword2);
+            this.Files.Controls.Add(this.tbFilePassword1);
+            this.Files.Controls.Add(this.btnDecryptFile);
+            this.Files.Controls.Add(this.label3);
+            this.Files.Controls.Add(this.btnEncryptFile);
+            this.Files.Location = new System.Drawing.Point(4, 22);
+            this.Files.Name = "Files";
+            this.Files.Padding = new System.Windows.Forms.Padding(3);
+            this.Files.Size = new System.Drawing.Size(411, 211);
+            this.Files.TabIndex = 1;
+            this.Files.Text = "Files";
+            this.Files.UseVisualStyleBackColor = true;
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBrowse.Location = new System.Drawing.Point(378, 26);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(25, 23);
+            this.btnBrowse.TabIndex = 30;
+            this.btnBrowse.Text = "...";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 21;
-            this.label1.Text = "Input";
+            this.label1.Text = "Input File";
             // 
             // label2
             // 
@@ -224,35 +235,45 @@
             this.label2.TabIndex = 29;
             this.label2.Text = "Check Password";
             // 
-            // textBox2
+            // tbFileUrl
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbFileUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(6, 115);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(397, 20);
-            this.textBox2.TabIndex = 23;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.tbFileUrl.Location = new System.Drawing.Point(6, 26);
+            this.tbFileUrl.Name = "tbFileUrl";
+            this.tbFileUrl.Size = new System.Drawing.Size(366, 20);
+            this.tbFileUrl.TabIndex = 20;
             // 
-            // textBox3
+            // tbFilePassword2
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbFilePassword2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(6, 74);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(397, 20);
-            this.textBox3.TabIndex = 22;
-            this.textBox3.UseSystemPasswordChar = true;
+            this.tbFilePassword2.Location = new System.Drawing.Point(6, 115);
+            this.tbFilePassword2.Name = "tbFilePassword2";
+            this.tbFilePassword2.Size = new System.Drawing.Size(397, 20);
+            this.tbFilePassword2.TabIndex = 23;
+            this.tbFilePassword2.UseSystemPasswordChar = true;
             // 
-            // button1
+            // tbFilePassword1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(330, 145);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Decrypt";
-            this.button1.UseVisualStyleBackColor = true;
+            this.tbFilePassword1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbFilePassword1.Location = new System.Drawing.Point(6, 74);
+            this.tbFilePassword1.Name = "tbFilePassword1";
+            this.tbFilePassword1.Size = new System.Drawing.Size(397, 20);
+            this.tbFilePassword1.TabIndex = 22;
+            this.tbFilePassword1.UseSystemPasswordChar = true;
+            // 
+            // btnDecryptFile
+            // 
+            this.btnDecryptFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDecryptFile.Location = new System.Drawing.Point(330, 145);
+            this.btnDecryptFile.Name = "btnDecryptFile";
+            this.btnDecryptFile.Size = new System.Drawing.Size(75, 23);
+            this.btnDecryptFile.TabIndex = 28;
+            this.btnDecryptFile.Text = "Decrypt";
+            this.btnDecryptFile.UseVisualStyleBackColor = true;
+            this.btnDecryptFile.Click += new System.EventHandler(this.btnDecryptFile_Click);
             // 
             // label3
             // 
@@ -263,40 +284,20 @@
             this.label3.TabIndex = 24;
             this.label3.Text = "Password";
             // 
-            // button2
+            // btnEncryptFile
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(246, 145);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Encrypt";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // tbFileUrl
-            // 
-            this.tbFileUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbFileUrl.Location = new System.Drawing.Point(6, 26);
-            this.tbFileUrl.Name = "tbFileUrl";
-            this.tbFileUrl.Size = new System.Drawing.Size(366, 20);
-            this.tbFileUrl.TabIndex = 20;
+            this.btnEncryptFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEncryptFile.Location = new System.Drawing.Point(246, 145);
+            this.btnEncryptFile.Name = "btnEncryptFile";
+            this.btnEncryptFile.Size = new System.Drawing.Size(75, 23);
+            this.btnEncryptFile.TabIndex = 27;
+            this.btnEncryptFile.Text = "Encrypt";
+            this.btnEncryptFile.UseVisualStyleBackColor = true;
+            this.btnEncryptFile.Click += new System.EventHandler(this.btnEncryptFile_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(378, 26);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(25, 23);
-            this.button3.TabIndex = 30;
-            this.button3.Text = "...";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // SimpleEncryptor
             // 
@@ -333,15 +334,15 @@
         private System.Windows.Forms.TextBox tbOuput;
         private System.Windows.Forms.Label lblOutput;
         private System.Windows.Forms.TabPage Files;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbFileUrl;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tbFilePassword2;
+        private System.Windows.Forms.TextBox tbFilePassword1;
+        private System.Windows.Forms.Button btnDecryptFile;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnEncryptFile;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
