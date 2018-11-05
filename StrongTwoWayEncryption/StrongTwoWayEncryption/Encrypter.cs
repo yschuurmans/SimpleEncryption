@@ -135,7 +135,14 @@ namespace StrongTwoWayEncryption
 
                 string readFile = ReadFileAsBase64(tbFileUrl.Text);
                 string decryptedFile = DecryptBase64File(readFile, out filename, out extension);
-                SaveFileFromBase64(decryptedFile, filename, "Original File Format|*"+extension);
+                if (String.IsNullOrEmpty(decryptedFile))
+                {
+                    MessageBox.Show("Password is not correct, file could not be decoded.");
+                }
+                else
+                {
+                    SaveFileFromBase64(decryptedFile, filename, "Original File Format|*" + extension);
+                }
             }
         }
 
@@ -168,6 +175,12 @@ namespace StrongTwoWayEncryption
         private string DecryptBase64File(string encryptedFileString, out string fileName, out string extension)
         {
             string jsonEncFile = TwoWayAES.SimpleDecryptWithPassword(encryptedFileString, tbFilePassword1.Text);
+            if (String.IsNullOrEmpty(jsonEncFile))
+            {
+                fileName = "";
+                extension = "";
+                return "";
+            }
             EncryptedFile encFile = JsonConvert.DeserializeObject<EncryptedFile>(jsonEncFile);
             fileName = encFile.FileName;
             extension = encFile.Extension;
