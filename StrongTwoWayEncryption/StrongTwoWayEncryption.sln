@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrongTwoWayEncryption", "StrongTwoWayEncryption\StrongTwoWayEncryption.csproj", "{C0426B46-9EF3-4471-ABFB-AAF699DE38C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCrypt", "SimpleCrypt\SimpleCrypt.csproj", "{864ADD85-4430-4E90-91A1-4FFCFDBCCCA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptLib", "CryptLib\CryptLib.csproj", "{A7F56803-1CAF-4F41-9596-2B0080F9FE69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +19,19 @@ Global
 		{C0426B46-9EF3-4471-ABFB-AAF699DE38C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0426B46-9EF3-4471-ABFB-AAF699DE38C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0426B46-9EF3-4471-ABFB-AAF699DE38C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{864ADD85-4430-4E90-91A1-4FFCFDBCCCA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{864ADD85-4430-4E90-91A1-4FFCFDBCCCA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{864ADD85-4430-4E90-91A1-4FFCFDBCCCA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{864ADD85-4430-4E90-91A1-4FFCFDBCCCA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7F56803-1CAF-4F41-9596-2B0080F9FE69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7F56803-1CAF-4F41-9596-2B0080F9FE69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7F56803-1CAF-4F41-9596-2B0080F9FE69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7F56803-1CAF-4F41-9596-2B0080F9FE69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA0AD150-FCD4-41CD-80C3-57AC0B7E8308}
 	EndGlobalSection
 EndGlobal

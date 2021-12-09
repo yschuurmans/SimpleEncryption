@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SimpleCrypt": {
+      "commandName": "Project",
+      "commandLineArgs": "password=test decrypt=2c7TWpwh+drXR29w8pgMt94KoEZcSviXvIWQ9WNTyzi3A7WDLcDvybS18re3bx9VJY14ylL6G+KKFbmuDH61+1Nrbip701QarCk88MU7YII="
+    }
+  }
+}

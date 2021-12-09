@@ -10,7 +10,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace StrongTwoWayEncryption
+namespace CryptLib
 {
     public static class TwoWayAES
     {
@@ -23,7 +23,7 @@ namespace StrongTwoWayEncryption
         //Preconfigured Password Key Derivation Parameters
         public static readonly int SaltBitSize = 64;
         public static readonly int Iterations = 10000;
-        public static readonly int MinPasswordLength = 6;
+        public static readonly int MinPasswordLength = 4;
 
         /// <summary>
         /// Helper that generates a random key on each call.
@@ -46,7 +46,7 @@ namespace StrongTwoWayEncryption
         /// <returns>
         /// Encrypted Message
         /// </returns>
-        /// <exception cref="System.ArgumentException">Secret Message Required!;secretMessage</exception>
+        /// <exception cref="ArgumentException">Secret Message Required!;secretMessage</exception>
         /// <remarks>
         /// Adds overhead of (Optional-Payload + BlockSize(16) + Message-Padded-To-Blocksize +  HMac-Tag(32)) * 1.33 Base64
         /// </remarks>
@@ -71,7 +71,7 @@ namespace StrongTwoWayEncryption
         /// <returns>
         /// Decrypted Message
         /// </returns>
-        /// <exception cref="System.ArgumentException">Encrypted Message Required!;encryptedMessage</exception>
+        /// <exception cref="ArgumentException">Encrypted Message Required!;encryptedMessage</exception>
         public static string SimpleDecrypt(string encryptedMessage, byte[] cryptKey, byte[] authKey,
                            int nonSecretPayloadLength = 0)
         {
@@ -93,7 +93,7 @@ namespace StrongTwoWayEncryption
         /// <returns>
         /// Encrypted Message
         /// </returns>
-        /// <exception cref="System.ArgumentException">password</exception>
+        /// <exception cref="ArgumentException">password</exception>
         /// <remarks>
         /// Significantly less secure than using random binary keys.
         /// Adds additional non secret payload for key generation parameters.
@@ -119,7 +119,7 @@ namespace StrongTwoWayEncryption
         /// <returns>
         /// Decrypted Message
         /// </returns>
-        /// <exception cref="System.ArgumentException">Encrypted Message Required!;encryptedMessage</exception>
+        /// <exception cref="ArgumentException">Encrypted Message Required!;encryptedMessage</exception>
         /// <remarks>
         /// Significantly less secure than using random binary keys.
         /// </remarks>
@@ -138,10 +138,10 @@ namespace StrongTwoWayEncryption
         {
             //User Error Checks
             if (cryptKey == null || cryptKey.Length != KeyBitSize / 8)
-                throw new ArgumentException(String.Format("Key needs to be {0} bit!", KeyBitSize), "cryptKey");
+                throw new ArgumentException(string.Format("Key needs to be {0} bit!", KeyBitSize), "cryptKey");
 
             if (authKey == null || authKey.Length != KeyBitSize / 8)
-                throw new ArgumentException(String.Format("Key needs to be {0} bit!", KeyBitSize), "authKey");
+                throw new ArgumentException(string.Format("Key needs to be {0} bit!", KeyBitSize), "authKey");
 
             if (secretMessage == null || secretMessage.Length < 1)
                 throw new ArgumentException("Secret Message Required!", "secretMessage");
@@ -209,10 +209,10 @@ namespace StrongTwoWayEncryption
 
             //Basic Usage Error Checks
             if (cryptKey == null || cryptKey.Length != KeyBitSize / 8)
-                throw new ArgumentException(String.Format("CryptKey needs to be {0} bit!", KeyBitSize), "cryptKey");
+                throw new ArgumentException(string.Format("CryptKey needs to be {0} bit!", KeyBitSize), "cryptKey");
 
             if (authKey == null || authKey.Length != KeyBitSize / 8)
-                throw new ArgumentException(String.Format("AuthKey needs to be {0} bit!", KeyBitSize), "authKey");
+                throw new ArgumentException(string.Format("AuthKey needs to be {0} bit!", KeyBitSize), "authKey");
 
             if (encryptedMessage == null || encryptedMessage.Length == 0)
                 throw new ArgumentException("Encrypted Message Required!", "encryptedMessage");
@@ -222,7 +222,7 @@ namespace StrongTwoWayEncryption
                 var sentTag = new byte[hmac.HashSize / 8];
                 //Calculate Tag
                 var calcTag = hmac.ComputeHash(encryptedMessage, 0, encryptedMessage.Length - sentTag.Length);
-                var ivLength = (BlockBitSize / 8);
+                var ivLength = BlockBitSize / 8;
 
                 //if message length is to small just return null
                 if (encryptedMessage.Length < sentTag.Length + nonSecretPayloadLength + ivLength)
@@ -279,12 +279,12 @@ namespace StrongTwoWayEncryption
 
             //User Error Checks
             if (string.IsNullOrWhiteSpace(password) || password.Length < MinPasswordLength)
-                throw new ArgumentException(String.Format("Must have a password of at least {0} characters!", MinPasswordLength), "password");
+                throw new ArgumentException(string.Format("Must have a password of at least {0} characters!", MinPasswordLength), "password");
 
             if (secretMessage == null || secretMessage.Length == 0)
                 throw new ArgumentException("Secret Message Required!", "secretMessage");
 
-            var payload = new byte[((SaltBitSize / 8) * 2) + nonSecretPayload.Length];
+            var payload = new byte[SaltBitSize / 8 * 2 + nonSecretPayload.Length];
 
             Array.Copy(nonSecretPayload, payload, nonSecretPayload.Length);
             int payloadIndex = nonSecretPayload.Length;
@@ -324,7 +324,7 @@ namespace StrongTwoWayEncryption
         {
             //User Error Checks
             if (string.IsNullOrWhiteSpace(password) || password.Length < MinPasswordLength)
-                throw new ArgumentException(String.Format("Must have a password of at least {0} characters!", MinPasswordLength), "password");
+                throw new ArgumentException(string.Format("Must have a password of at least {0} characters!", MinPasswordLength), "password");
 
             if (encryptedMessage == null || encryptedMessage.Length == 0)
                 throw new ArgumentException("Encrypted Message Required!", "encryptedMessage");

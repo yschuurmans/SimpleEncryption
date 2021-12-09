@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CryptLib;
 using Newtonsoft.Json;
 
 namespace StrongTwoWayEncryption
@@ -55,6 +56,8 @@ namespace StrongTwoWayEncryption
         {
             if (tbFileUrl.Text.Length > 0 && File.Exists(tbFileUrl.Text))
                 openFileDialog1.InitialDirectory = Path.GetDirectoryName(tbFileUrl.Text);
+            else
+                openFileDialog1.InitialDirectory = Application.StartupPath;
 
             DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
             if (result == DialogResult.OK) // Test result.
@@ -72,9 +75,9 @@ namespace StrongTwoWayEncryption
 
         private bool CheckInput()
         {
-            if (tbPassword.Text.Length < 6)
+            if (tbPassword.Text.Length < 4)
             {
-                MessageBox.Show("Password must be at least 6 characters");
+                MessageBox.Show("Password must be at least 4 characters");
                 return false;
             }
             if (tbPassword.Text != tbPasswordCheck.Text)
@@ -87,9 +90,9 @@ namespace StrongTwoWayEncryption
 
         private bool CheckFileInput()
         {
-            if (tbFilePassword1.Text.Length < 6)
+            if (tbFilePassword1.Text.Length < 4)
             {
-                MessageBox.Show("Password must be at least 6 characters");
+                MessageBox.Show("Password must be at least 4 characters");
                 return false;
             }
             if (tbFilePassword1.Text != tbFilePassword2.Text)

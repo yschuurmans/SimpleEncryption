@@ -66,7 +66,7 @@
             this.tbStrings.Location = new System.Drawing.Point(0, 0);
             this.tbStrings.Name = "tbStrings";
             this.tbStrings.SelectedIndex = 0;
-            this.tbStrings.Size = new System.Drawing.Size(419, 237);
+            this.tbStrings.Size = new System.Drawing.Size(419, 314);
             this.tbStrings.TabIndex = 10;
             // 
             // tabPage1
@@ -84,7 +84,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(411, 211);
+            this.tabPage1.Size = new System.Drawing.Size(411, 288);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Strings";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -146,6 +146,7 @@
             this.btnDecrypt.TabIndex = 18;
             this.btnDecrypt.Text = "Decrypt";
             this.btnDecrypt.UseVisualStyleBackColor = true;
+            this.btnDecrypt.Click += new System.EventHandler(this.btnDecrypt_Click);
             // 
             // lblPassword
             // 
@@ -165,6 +166,7 @@
             this.btnEncrypt.TabIndex = 17;
             this.btnEncrypt.Text = "Encrypt";
             this.btnEncrypt.UseVisualStyleBackColor = true;
+            this.btnEncrypt.Click += new System.EventHandler(this.btnEncrypt_Click);
             // 
             // tbOuput
             // 
@@ -174,7 +176,7 @@
             this.tbOuput.Location = new System.Drawing.Point(6, 215);
             this.tbOuput.Multiline = true;
             this.tbOuput.Name = "tbOuput";
-            this.tbOuput.Size = new System.Drawing.Size(399, 104);
+            this.tbOuput.Size = new System.Drawing.Size(399, 65);
             this.tbOuput.TabIndex = 15;
             this.tbOuput.UseSystemPasswordChar = true;
             // 
@@ -201,7 +203,7 @@
             this.Files.Location = new System.Drawing.Point(4, 22);
             this.Files.Name = "Files";
             this.Files.Padding = new System.Windows.Forms.Padding(3);
-            this.Files.Size = new System.Drawing.Size(411, 211);
+            this.Files.Size = new System.Drawing.Size(411, 288);
             this.Files.TabIndex = 1;
             this.Files.Text = "Files";
             this.Files.UseVisualStyleBackColor = true;
@@ -303,7 +305,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 237);
+            this.ClientSize = new System.Drawing.Size(419, 314);
             this.Controls.Add(this.tbStrings);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1280, 720);
